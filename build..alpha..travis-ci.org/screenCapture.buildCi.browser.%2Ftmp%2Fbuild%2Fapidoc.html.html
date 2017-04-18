@@ -81,41 +81,6 @@
 
         </li>
 
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.yeoman-generator.toString">
-            function <span class="apidocSignatureSpan">yeoman-generator.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.yeoman-generator.extend">module yeoman-generator.extend</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.yeoman-generator.extend.extend">
-            function <span class="apidocSignatureSpan">yeoman-generator.</span>extend
-            <span class="apidocSignatureSpan">(protoProps, staticProps)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.yeoman-generator.toString">module yeoman-generator.toString</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.yeoman-generator.toString.toString">
-            function <span class="apidocSignatureSpan">yeoman-generator.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
     </ol></li>
 
 </ol></div>
@@ -277,92 +242,6 @@
     <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
   EventEmitter.init.call(this);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.yeoman-generator.toString" id="apidoc.element.yeoman-generator.toString">
-        function <span class="apidocSignatureSpan">yeoman-generator.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.yeoman-generator.extend" id="apidoc.module.yeoman-generator.extend">module yeoman-generator.extend</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.yeoman-generator.extend.extend" id="apidoc.element.yeoman-generator.extend.extend">
-        function <span class="apidocSignatureSpan">yeoman-generator.</span>extend
-        <span class="apidocSignatureSpan">(protoProps, staticProps)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function extend(protoProps, staticProps) {
-  var parent = this;
-  var child;
-
-  // The constructor function for the new subclass is either defined by you
-  // (the "constructor" property in your `extend` definition), or defaulted
-  // by us to simply call the parent's constructor.
-  if (protoProps &amp;&amp; hasOwnProp.call(protoProps, 'constructor')) {
-    child = protoProps.constructor;
-  } else {
-    child = function () { return parent.apply(this, arguments); };
-  }
-
-  // Add static properties to the constructor function, if supplied.
-  objectAssign(child, parent, staticProps);
-
-  // Set the prototype chain to inherit from `parent`
-  child.prototype = Object.create(parent.prototype, {
-    constructor: {
-      value: child,
-      enumerable: false,
-      writable: true,
-      configurable: true
-    }
-  });
-
-  // Add prototype properties (instance properties) to the subclass,
-  // if supplied.
-  if (protoProps) objectAssign(child.prototype, protoProps);
-
-  // Set a convenience property in case the parent's prototype is needed
-  // later.
-  child.__super__ = parent.prototype;
-
-  return child;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.yeoman-generator.toString" id="apidoc.module.yeoman-generator.toString">module yeoman-generator.toString</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.yeoman-generator.toString.toString" id="apidoc.element.yeoman-generator.toString.toString">
-        function <span class="apidocSignatureSpan">yeoman-generator.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
