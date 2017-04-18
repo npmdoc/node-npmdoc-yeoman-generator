@@ -1,9 +1,14 @@
-# api documentation for  [yeoman-generator (v1.1.1)](http://yeoman.io)  [![npm package](https://img.shields.io/npm/v/npmdoc-yeoman-generator.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-yeoman-generator) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-yeoman-generator.svg)](https://travis-ci.org/npmdoc/node-npmdoc-yeoman-generator)
+# npmdoc-yeoman-generator
+
+#### api documentation for  [yeoman-generator (v1.1.1)](http://yeoman.io)  [![npm package](https://img.shields.io/npm/v/npmdoc-yeoman-generator.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-yeoman-generator) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-yeoman-generator.svg)](https://travis-ci.org/npmdoc/node-npmdoc-yeoman-generator)
+
 #### Rails-inspired generator system that provides scaffolding for your apps
 
-[![NPM](https://nodei.co/npm/yeoman-generator.png?downloads=true)](https://www.npmjs.com/package/yeoman-generator)
+[![NPM](https://nodei.co/npm/yeoman-generator.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/yeoman-generator)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-yeoman-generator/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-yeoman-generator_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-yeoman-generator/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-yeoman-generator/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-yeoman-generator/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-yeoman-generator/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-yeoman-generator/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-yeoman-generator/build/screenCapture.npmPackageListing.svg)
 
@@ -104,37 +109,29 @@
     "main": "lib",
     "maintainers": [
         {
-            "name": "addyosmani",
-            "email": "addyosmani@gmail.com"
+            "name": "addyosmani"
         },
         {
-            "name": "eddiemonge",
-            "email": "eddie+npm@eddiemonge.com"
+            "name": "eddiemonge"
         },
         {
-            "name": "mischah",
-            "email": "mail@michael-kuehnel.de"
+            "name": "mischah"
         },
         {
-            "name": "passy",
-            "email": "phartig@rdrei.net"
+            "name": "passy"
         },
         {
-            "name": "paulirish",
-            "email": "paul.irish@gmail.com"
+            "name": "paulirish"
         },
         {
-            "name": "sboudrias",
-            "email": "admin@simonboudrias.com"
+            "name": "sboudrias"
         },
         {
-            "name": "sindresorhus",
-            "email": "sindresorhus@gmail.com"
+            "name": "sindresorhus"
         }
     ],
     "name": "yeoman-generator",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/yeoman/generator.git"
@@ -163,75 +160,6 @@
         ]
     }
 }
-```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module yeoman-generator](#apidoc.module.yeoman-generator)
-1.  [function <span class="apidocSignatureSpan">yeoman-generator.</span>extend (protoProps, staticProps)](#apidoc.element.yeoman-generator.extend)
-1.  [function <span class="apidocSignatureSpan">yeoman-generator.</span>super_ ()](#apidoc.element.yeoman-generator.super_)
-
-
-
-# <a name="apidoc.module.yeoman-generator"></a>[module yeoman-generator](#apidoc.module.yeoman-generator)
-
-#### <a name="apidoc.element.yeoman-generator.extend"></a>[function <span class="apidocSignatureSpan">yeoman-generator.</span>extend (protoProps, staticProps)](#apidoc.element.yeoman-generator.extend)
-- description and source-code
-```javascript
-function extend(protoProps, staticProps) {
-  var parent = this;
-  var child;
-
-  // The constructor function for the new subclass is either defined by you
-  // (the "constructor" property in your 'extend' definition), or defaulted
-  // by us to simply call the parent's constructor.
-  if (protoProps && hasOwnProp.call(protoProps, 'constructor')) {
-    child = protoProps.constructor;
-  } else {
-    child = function () { return parent.apply(this, arguments); };
-  }
-
-  // Add static properties to the constructor function, if supplied.
-  objectAssign(child, parent, staticProps);
-
-  // Set the prototype chain to inherit from 'parent'
-  child.prototype = Object.create(parent.prototype, {
-    constructor: {
-      value: child,
-      enumerable: false,
-      writable: true,
-      configurable: true
-    }
-  });
-
-  // Add prototype properties (instance properties) to the subclass,
-  // if supplied.
-  if (protoProps) objectAssign(child.prototype, protoProps);
-
-  // Set a convenience property in case the parent's prototype is needed
-  // later.
-  child.__super__ = parent.prototype;
-
-  return child;
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.yeoman-generator.super_"></a>[function <span class="apidocSignatureSpan">yeoman-generator.</span>super_ ()](#apidoc.element.yeoman-generator.super_)
-- description and source-code
-```javascript
-function EventEmitter() {
-  EventEmitter.init.call(this);
-}
-```
-- example usage
-```shell
-n/a
 ```
 
 
