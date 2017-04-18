@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="http://yeoman.io"
-
-    >yeoman-generator (v1.1.1)</a>
+    <a href="http://yeoman.io">yeoman-generator (v1.1.1)</a>
 </h1>
 <h4>Rails-inspired generator system that provides scaffolding for your apps</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.yeoman-generator">module yeoman-generator</a><ol>
 
@@ -154,34 +147,34 @@
   this._composedWith = [];
   this._transformStreams = [];
 
-  this.option(&#x27;help&#x27;, {
+  this.option('help', {
     type: Boolean,
-    alias: &#x27;h&#x27;,
-    description: &#x27;Print the generator\&#x27;s options and usage&#x27;
+    alias: 'h',
+    description: 'Print the generator\'s options and usage'
   });
 
-  this.option(&#x27;skip-cache&#x27;, {
+  this.option('skip-cache', {
     type: Boolean,
-    description: &#x27;Do not remember prompt answers&#x27;,
+    description: 'Do not remember prompt answers',
     default: false
   });
 
-  this.option(&#x27;skip-install&#x27;, {
+  this.option('skip-install', {
     type: Boolean,
-    description: &#x27;Do not automatically install dependencies&#x27;,
+    description: 'Do not automatically install dependencies',
     default: false
   });
 
   // Checks required paramaters
-  assert(this.options.env, &#x27;You must provide the environment object. Use env#create() to create a new generator.&#x27;);
-  assert(this.options.resolved, &#x27;You must provide the resolved path value. Use env#create() to create a new generator.&#x27;);
+  assert(this.options.env, 'You must provide the environment object. Use env#create() to create a new generator.');
+  assert(this.options.resolved, 'You must provide the resolved path value. Use env#create() to create a new generator.');
   this.env = this.options.env;
   this.resolved = this.options.resolved;
 
   // Ensure the environment support features this yeoman-generator version require.
-  require(&#x27;yeoman-environment&#x27;).enforceUpdate(this.env);
+  require('yeoman-environment').enforceUpdate(this.env);
 
-  this.description = this.description || &#x27;&#x27;;
+  this.description = this.description || '';
 
   this.async = function () {
     return function () {};
@@ -193,24 +186,24 @@
   // Mirror the adapter log method on the generator.
   //
   // example:
-  // this.log(&#x27;foo&#x27;);
-  // this.log.error(&#x27;bar&#x27;);
+  // this.log('foo');
+  // this.log.error('bar');
   this.log = this.env.adapter.log;
 
   // Determine the app root
   this.contextRoot = this.env.cwd;
 
-  var rootPath = findUp.sync(&#x27;.yo-rc.json&#x27;, {
+  var rootPath = findUp.sync('.yo-rc.json', {
     cwd: this.env.cwd
   });
   rootPath = rootPath ? path.dirname(rootPath) : this.env.cwd;
 
   if (rootPath !== this.env.cwd) {
     this.log([
-      &#x27;&#x27;,
-      &#x27;Just found a `.yo-rc.json` in a parent directory.&#x27;,
-      &#x27;Setting the project root at: &#x27; + rootPath
-    ].join(&#x27;\n&#x27;));
+      '',
+      'Just found a `.yo-rc.json` in a parent directory.',
+      'Setting the project root at: ' + rootPath
+    ].join('\n'));
     this.destinationRoot(rootPath);
   }
 
@@ -219,7 +212,7 @@
   this._globalConfig = this._getGlobalStorage();
 
   // Ensure source/destination path, can be configured from subclasses
-  this.sourceRoot(path.join(path.dirname(this.resolved), &#x27;templates&#x27;));
+  this.sourceRoot(path.join(path.dirname(this.resolved), 'templates'));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -238,9 +231,9 @@
   var child;
 
   // The constructor function for the new subclass is either defined by you
-  // (the &#x22;constructor&#x22; property in your `extend` definition), or defaulted
-  // by us to simply call the parent&#x27;s constructor.
-  if (protoProps &#x26;&#x26; hasOwnProp.call(protoProps, &#x27;constructor&#x27;)) {
+  // (the "constructor" property in your `extend` definition), or defaulted
+  // by us to simply call the parent's constructor.
+  if (protoProps &amp;&amp; hasOwnProp.call(protoProps, 'constructor')) {
     child = protoProps.constructor;
   } else {
     child = function () { return parent.apply(this, arguments); };
@@ -263,7 +256,7 @@
   // if supplied.
   if (protoProps) objectAssign(child.prototype, protoProps);
 
-  // Set a convenience property in case the parent&#x27;s prototype is needed
+  // Set a convenience property in case the parent's prototype is needed
   // later.
   child.__super__ = parent.prototype;
 
@@ -321,9 +314,9 @@
   var child;
 
   // The constructor function for the new subclass is either defined by you
-  // (the &#x22;constructor&#x22; property in your `extend` definition), or defaulted
-  // by us to simply call the parent&#x27;s constructor.
-  if (protoProps &#x26;&#x26; hasOwnProp.call(protoProps, &#x27;constructor&#x27;)) {
+  // (the "constructor" property in your `extend` definition), or defaulted
+  // by us to simply call the parent's constructor.
+  if (protoProps &amp;&amp; hasOwnProp.call(protoProps, 'constructor')) {
     child = protoProps.constructor;
   } else {
     child = function () { return parent.apply(this, arguments); };
@@ -346,7 +339,7 @@
   // if supplied.
   if (protoProps) objectAssign(child.prototype, protoProps);
 
-  // Set a convenience property in case the parent&#x27;s prototype is needed
+  // Set a convenience property in case the parent's prototype is needed
   // later.
   child.__super__ = parent.prototype;
 
@@ -382,3 +375,4 @@
     ]
 </div>
 </div>
+</body></html>

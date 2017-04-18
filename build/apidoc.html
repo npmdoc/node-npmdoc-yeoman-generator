@@ -63,6 +63,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.yeoman-generator.yeoman-generator">
+            function <span class="apidocSignatureSpan"></span>yeoman-generator
+            <span class="apidocSignatureSpan">(args, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.yeoman-generator.extend">
             function <span class="apidocSignatureSpan">yeoman-generator.</span>extend
             <span class="apidocSignatureSpan">(protoProps, staticProps)</span>
@@ -79,12 +88,142 @@
 
         </li>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.yeoman-generator.toString">
+            function <span class="apidocSignatureSpan">yeoman-generator.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.yeoman-generator.extend">module yeoman-generator.extend</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.yeoman-generator.extend.extend">
+            function <span class="apidocSignatureSpan">yeoman-generator.</span>extend
+            <span class="apidocSignatureSpan">(protoProps, staticProps)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.yeoman-generator.toString">module yeoman-generator.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.yeoman-generator.toString.toString">
+            function <span class="apidocSignatureSpan">yeoman-generator.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.yeoman-generator" id="apidoc.module.yeoman-generator">module yeoman-generator</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.yeoman-generator.yeoman-generator" id="apidoc.element.yeoman-generator.yeoman-generator">
+        function <span class="apidocSignatureSpan"></span>yeoman-generator
+        <span class="apidocSignatureSpan">(args, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">yeoman-generator = function (args, options) {
+  events.EventEmitter.call(this);
+
+  if (!Array.isArray(args)) {
+    options = args;
+    args = [];
+  }
+
+  this.options = options || {};
+  this._initOptions = _.clone(options);
+  this._args = args || [];
+  this._options = {};
+  this._arguments = [];
+  this._composedWith = [];
+  this._transformStreams = [];
+
+  this.option(&#x27;help&#x27;, {
+    type: Boolean,
+    alias: &#x27;h&#x27;,
+    description: &#x27;Print the generator\&#x27;s options and usage&#x27;
+  });
+
+  this.option(&#x27;skip-cache&#x27;, {
+    type: Boolean,
+    description: &#x27;Do not remember prompt answers&#x27;,
+    default: false
+  });
+
+  this.option(&#x27;skip-install&#x27;, {
+    type: Boolean,
+    description: &#x27;Do not automatically install dependencies&#x27;,
+    default: false
+  });
+
+  // Checks required paramaters
+  assert(this.options.env, &#x27;You must provide the environment object. Use env#create() to create a new generator.&#x27;);
+  assert(this.options.resolved, &#x27;You must provide the resolved path value. Use env#create() to create a new generator.&#x27;);
+  this.env = this.options.env;
+  this.resolved = this.options.resolved;
+
+  // Ensure the environment support features this yeoman-generator version require.
+  require(&#x27;yeoman-environment&#x27;).enforceUpdate(this.env);
+
+  this.description = this.description || &#x27;&#x27;;
+
+  this.async = function () {
+    return function () {};
+  };
+
+  this.fs = FileEditor.create(this.env.sharedFs);
+  this.conflicter = new Conflicter(this.env.adapter, this.options.force);
+
+  // Mirror the adapter log method on the generator.
+  //
+  // example:
+  // this.log(&#x27;foo&#x27;);
+  // this.log.error(&#x27;bar&#x27;);
+  this.log = this.env.adapter.log;
+
+  // Determine the app root
+  this.contextRoot = this.env.cwd;
+
+  var rootPath = findUp.sync(&#x27;.yo-rc.json&#x27;, {
+    cwd: this.env.cwd
+  });
+  rootPath = rootPath ? path.dirname(rootPath) : this.env.cwd;
+
+  if (rootPath !== this.env.cwd) {
+    this.log([
+      &#x27;&#x27;,
+      &#x27;Just found a `.yo-rc.json` in a parent directory.&#x27;,
+      &#x27;Setting the project root at: &#x27; + rootPath
+    ].join(&#x27;\n&#x27;));
+    this.destinationRoot(rootPath);
+  }
+
+  this.appname = this.determineAppname();
+  this.config = this._getStorage();
+  this._globalConfig = this._getGlobalStorage();
+
+  // Ensure source/destination path, can be configured from subclasses
+  this.sourceRoot(path.join(path.dirname(this.resolved), &#x27;templates&#x27;));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
     <h2>
@@ -145,6 +284,92 @@
     <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
   EventEmitter.init.call(this);
 }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.yeoman-generator.toString" id="apidoc.element.yeoman-generator.toString">
+        function <span class="apidocSignatureSpan">yeoman-generator.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.yeoman-generator.extend" id="apidoc.module.yeoman-generator.extend">module yeoman-generator.extend</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.yeoman-generator.extend.extend" id="apidoc.element.yeoman-generator.extend.extend">
+        function <span class="apidocSignatureSpan">yeoman-generator.</span>extend
+        <span class="apidocSignatureSpan">(protoProps, staticProps)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function extend(protoProps, staticProps) {
+  var parent = this;
+  var child;
+
+  // The constructor function for the new subclass is either defined by you
+  // (the &#x22;constructor&#x22; property in your `extend` definition), or defaulted
+  // by us to simply call the parent&#x27;s constructor.
+  if (protoProps &#x26;&#x26; hasOwnProp.call(protoProps, &#x27;constructor&#x27;)) {
+    child = protoProps.constructor;
+  } else {
+    child = function () { return parent.apply(this, arguments); };
+  }
+
+  // Add static properties to the constructor function, if supplied.
+  objectAssign(child, parent, staticProps);
+
+  // Set the prototype chain to inherit from `parent`
+  child.prototype = Object.create(parent.prototype, {
+    constructor: {
+      value: child,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+
+  // Add prototype properties (instance properties) to the subclass,
+  // if supplied.
+  if (protoProps) objectAssign(child.prototype, protoProps);
+
+  // Set a convenience property in case the parent&#x27;s prototype is needed
+  // later.
+  child.__super__ = parent.prototype;
+
+  return child;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.yeoman-generator.toString" id="apidoc.module.yeoman-generator.toString">module yeoman-generator.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.yeoman-generator.toString.toString" id="apidoc.element.yeoman-generator.toString.toString">
+        function <span class="apidocSignatureSpan">yeoman-generator.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
